@@ -19,14 +19,17 @@ stessa porta. Sito in italiano, con pagina per prodotto, FAQ e recensioni.
 | Profilo | Porta | Come ci si arriva |
 |---------|-------|-------------------|
 | `dev` | 4250 | `http://localhost:4250` |
-| `prod` | 4252 | Caddy lo pubblica sul dominio della cliente (`nbs-infra/caddy/CaddyFile`) |
+| `prod` | 4252 | pubblico sul dominio della cliente via Cloudflare Tunnel |
 
 > In precedenza `prod` usava la 4250, la stessa di `dev`. Ora segue la convenzione
 > `42X0` dev / `42X2` prod — vedi `nbs-infra/docs/PORTS.md`.
 
-La porta è legata a `127.0.0.1`: il traffico pubblico entra dalla 443 di Caddy,
-che raggiunge il container come `haircolortechnology.app.prod` dentro
-`noboolsheet_network`.
+vibox non ha IP pubblico, quindi la porta pubblica è un **Cloudflare Tunnel**: il
+connettore esce da casa, Cloudflare termina il TLS e instrada il dominio verso il
+container `haircolortechnology.app.prod`. Non serve aprire nulla sul router.
+
+Il tunnel non è ancora configurato per questo sito — vedi come è fatto in
+`nbs-clients/alondra/web/cloudflared/`.
 
 ## Flusso di lavoro
 

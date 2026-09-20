@@ -26,12 +26,6 @@ else
     exit 1
 fi
 
-# Guarda de interfaz: el contenedor no publica en 0.0.0.0. Caddy lo alcanza por
-# nombre dentro de noboolsheet_network; expose.sh, por localhost.
-if [[ "$DOCKER_IFACE" == *CAMBIAME* ]]; then
-    echo "❌ DOCKER_IFACE sigue sin rellenar en $ENV_DIR/.env.$ENV"
-    exit 1
-fi
 
 # 3. Verificar el secreto de Gmail (GMAIL_USER + GMAIL_APP_PASSWORD viven en web/.env.$ENV, gitignored)
 if [ ! -f "$WEB_DIR/.env.$ENV" ]; then
