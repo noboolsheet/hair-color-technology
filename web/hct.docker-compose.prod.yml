@@ -1,0 +1,35 @@
+name: stack-site-hct-${DOCKER_PROFILE}
+
+# Hair Color Technology (produzione). Un unico container Express serve il build
+# statico (dist/) E processa i moduli (contatti/candidatura) via Gmail.
+services:
+  frontend:
+    container_name: ${DOCKER_HCT_APP_DDNS}.${DOCKER_PROFILE}
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    restart: unless-stopped
+    ports:
+      - "${HCT_APP_IFACE}:${HCT_APP_EPORT}:${HCT_APP_IPORT}"
+    # Segreti (GMAIL_USER, GMAIL_APP_PASSWORD) da ./.env, gitignored.
+    env_file:
+      - ./.env.${DOCKER_PROFILE}
+    environment:
+      - NODE_ENV=production
+      - PORT=${HCT_APP_IPORT}
+      - CONTACT_TO=${HCT_CONTACT_TO}
+    # Healthcheck: colpisce il server dentro il container. Se il bind è sbagliato,
+    # il container appare 'unhealthy' in `docker ps` invece di un 'Up' ingannevole.
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:${HCT_APP_IPORT}/api/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+    networks:
+      - custom_net_ref
+
+networks:
+  custom_net_ref:
+    name: ${DOCKER_NETWORK}
+    external: true

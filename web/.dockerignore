@@ -1,0 +1,16 @@
+node_modules
+dist
+dist-ssr
+.git
+.env
+.env.*
+!.env.example
+*.log
+.DS_Store
+.claude
+.impeccable
+images-resources
+documents
+DESIGN.md
+PRODUCT.md
+CLAUDE.md

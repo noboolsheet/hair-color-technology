@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Token di tema (plain CSS, fuori da @layer per non essere rimossi in build).
+   Canali RGB per supportare l'opacità Tailwind (rgb(var(--x) / <alpha>)). */
+:root {
+  --ground: 249 249 246; /* limewash */
+  --raised: 255 255 255; /* pure */
+  --sunken: 226 233 216; /* sage-100 */
+  --ink: 51 51 51; /* graphite */
+  --band: 51 51 51; /* fasce scure di contrasto */
+  --sage-ink: 65 76 53; /* sage-800 */
+  --magenta: #e6007e; /* accento — costante nei due temi */
+}
+
+/* Tema scuro — near-black caldo con nota salvia, testo off-white. */
+:root.dark {
+  --ground: 24 26 22; /* #181A16 */
+  --raised: 34 38 31; /* #22261F */
+  --sunken: 40 46 35; /* #282E23 */
+  --ink: 236 239 231; /* #ECEFE7 */
+  --band: 15 17 13; /* #0F110D — più profondo del ground */
+  --sage-ink: 180 199 158; /* sage-300 */
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Transizione morbida al cambio tema. */
+  body,
+  .theme-x {
+    transition: background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+      border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+      color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    @apply bg-ground text-ink font-sans antialiased;
+    font-synthesis-weight: none;
+  }
+
+  ::selection {
+    background: var(--magenta);
+    color: #fff;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--magenta);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  h1, h2, h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+}
+
+@layer components {
+  /* Display voice — Archivo pushed to its expanded width axis, the
+     instrument-panel headline of the world. */
+  .display {
+    font-family: 'Archivo Variable', Archivo, system-ui, sans-serif;
+    font-variation-settings: 'wght' 640, 'wdth' 118;
+    letter-spacing: -0.03em;
+    line-height: 0.98;
+  }
+
+  .display-tight {
+    font-variation-settings: 'wght' 600, 'wdth' 112;
+    letter-spacing: -0.02em;
+    line-height: 1.02;
+  }
+
+  /* The Notation Rule — level / tone / vol / timing, tracked mono, small. */
+  .notation {
+    @apply font-mono uppercase text-ink;
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    font-variation-settings: 'wght' 500;
+  }
+
+
+  /* Fine grain overlay that makes color read as mixed pigment, never printed. */
+  .grain::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.5;
+    mix-blend-mode: soft-light;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}
+

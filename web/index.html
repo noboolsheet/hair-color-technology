@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="180x180" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Hair Color Technology di Francesca Polizza — salone a Paola specializzato in salute del capello, colorazione tecnica avanzata e trattamenti non invasivi. La scienza del colore, l'arte di curare i tuoi capelli."
+    />
+    <meta name="theme-color" content="#F9F9F6" />
+    <meta name="theme-color" content="#181A16" media="(prefers-color-scheme: dark)" />
+    <meta name="author" content="Hair Color Technology di Francesca Polizza" />
+    <title>Hair Color Technology · Francesca Polizza — Paola</title>
+
+    <!-- Anteprima social (WhatsApp / Facebook / Instagram). Per l'immagine di
+         anteprima og:image serve un URL ASSOLUTO: sostituisci https://IL-TUO-DOMINIO
+         con il dominio reale una volta online. -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Hair Color Technology" />
+    <meta property="og:locale" content="it_IT" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta property="og:locale:alternate" content="es_ES" />
+    <meta property="og:title" content="Hair Color Technology · Francesca Polizza — Paola" />
+    <meta
+      property="og:description"
+      content="Salone a Paola specializzato in salute del capello, colorazione tecnica avanzata e trattamenti non invasivi. La scienza del colore, l'arte di curare i tuoi capelli."
+    />
+    <meta property="og:image" content="https://IL-TUO-DOMINIO/images/logo-sfondo-bianco.webp" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Hair Color Technology · Francesca Polizza" />
+    <meta
+      name="twitter:description"
+      content="La scienza del colore, l'arte di curare i tuoi capelli. Salone di salute del capello a Paola."
+    />
+    <meta name="twitter:image" content="https://IL-TUO-DOMINIO/images/logo-sfondo-bianco.webp" />
+    <script>
+      // Anti-flash: applica tema e lingua salvati prima del primo paint.
+      (function () {
+        try {
+          var t = localStorage.getItem('hct-theme')
+          if (!t) t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+          if (t === 'dark') document.documentElement.classList.add('dark')
+          document.documentElement.style.colorScheme = t
+          var l = localStorage.getItem('hct-lang')
+          if (l === 'it' || l === 'en' || l === 'es') document.documentElement.lang = l
+        } catch (e) {}
+      })()
+    </script>
+  </head>
+  <body>
+    <!--
+      DIRECTION CONTRACT — Il Banco del Colore  (seed key d500d9b7 · assigned #6)
+      THESIS: The homepage is a colorist's mixing bench — color mixed as a living
+        spectrum, hair health read like an instrument. Refuses the glossy
+        model-hero luxe-salon default and the cold clinical lab.
+      OWN-WORLD: Limewash ground; sage carries whole regions; magenta rationed to
+        the single primary action and active state; graphite structure. Archivo
+        Expanded display + Martian Mono notation. Mixed (grained) spectral fields,
+        swatch/formula-card shapes, flat-bench depth.
+      STORY: A woman who fears hair damage sees technical mastery joined to care,
+        "mixes" a service to reveal its formula, and books via WhatsApp.
+      FIRST VIEWPORT: full-height mixed spectral field; left — display headline,
+        lead, magenta WhatsApp CTA; right — interactive banco card, service
+        swatches driving a mono formula readout.
+      FORM: "Il Banco del Colore", direction #6 of the resonance list; FORM seed d500d9b7.
+      FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md.
+    -->
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
