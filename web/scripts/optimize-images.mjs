@@ -20,7 +20,12 @@ import heicConvert from 'heic-convert'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const ROOT = path.resolve(__dirname, '..')
-const SRC_DIR = path.join(ROOT, 'images-resources')
+// Gli originali vivono FUORI dal repo (pesavano 19 MB): in
+// ../../_assets/hair-color-technology/imagenes/. IMAGES_SRC_DIR permette di
+// puntarci senza rimetterli in git; senza, si usa la cartella locale.
+const SRC_DIR = process.env.IMAGES_SRC_DIR
+  ? path.resolve(ROOT, process.env.IMAGES_SRC_DIR)
+  : path.join(ROOT, 'images-resources')
 const OUT_DIR = path.join(ROOT, 'public', 'images')
 
 const INPUT_EXTS = new Set([

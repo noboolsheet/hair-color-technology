@@ -56,5 +56,9 @@ I `.webp` serviti si generano dagli originali, che **non sono nel repo** (pesava
 `../../_assets/hair-color-technology/imagenes/`.
 
 ```sh
-cd web && npm run images        # rigenera public/images/
+cd web
+IMAGES_SRC_DIR=../../../_assets/hair-color-technology/imagenes npm run images
 ```
+
+Senza `IMAGES_SRC_DIR` lo script cerca in `web/images-resources/` (vuota e
+gitignored), utile solo per provare con qualche immagine sciolta.
