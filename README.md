@@ -40,7 +40,7 @@ Il tunnel non è ancora configurato per questo sito — vedi come è fatto in
 ./update-hct.sh prod           # su vibox: pull + redeploy
 ```
 
-`ship-hct.sh` costruisce prima di committare: `main` deve restare sempre
+`ship-hct.sh` costruisce prima di committare: `prod` deve restare sempre
 deployabile. `update-hct.sh` è l'altra metà, da eseguire sul server.
 
 Prima del primo deploy, creare il file dei segreti del profilo:

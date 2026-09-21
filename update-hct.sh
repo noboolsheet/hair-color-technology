@@ -17,7 +17,7 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$SCRIPT_DIR"
 
-BRANCH="main"          # única rama del repo
+BRANCH="prod"          # única rama del repo
 REMOTE="origin"
 
 ENV="prod"

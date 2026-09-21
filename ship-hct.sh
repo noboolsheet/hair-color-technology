@@ -23,7 +23,7 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$SCRIPT_DIR"
 
-BRANCH="main"          # única rama del repo
+BRANCH="prod"          # única rama del repo
 REMOTE="origin"
 MAX_FILE_MB=2          # nada pesado debe llegar al servidor (los originales están gitignored)
 
@@ -70,7 +70,7 @@ if [ "$DO_VERIFY" -eq 1 ]; then
     fi
     echo "🔍 Verificando (typecheck + build)…"
     if ! (cd web && npm run build); then
-        echo "❌ El build falla. No se commitea nada: 'main' debe quedar siempre desplegable."
+        echo "❌ El build falla. No se commitea nada: 'prod' debe quedar siempre desplegable."
         exit 1
     fi
     echo "✅ Build correcto."
