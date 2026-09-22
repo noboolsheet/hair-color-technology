@@ -28,7 +28,14 @@ vibox non ha IP pubblico, quindi la porta pubblica è un **Cloudflare Tunnel**: 
 connettore esce da casa, Cloudflare termina il TLS e instrada il dominio verso il
 container `haircolortechnology.app.prod`. Non serve aprire nulla sul router.
 
-Il tunnel non è ancora configurato per questo sito — vedi come è fatto in
+**Il tunnel non è ancora configurato, ed è voluto:** la cliente non ha ancora un
+dominio. Finché non lo compra, il sito si mostra con Tailscale Funnel:
+
+```sh
+./expose.sh prod        # URL https://<nodo>.<tailnet>.ts.net:8443
+```
+
+Quando il dominio ci sarà, si monta il tunnel copiando l'impostazione di
 `nbs-clients/alondra/web/cloudflared/`.
 
 ## Flusso di lavoro
